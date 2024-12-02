@@ -1,8 +1,8 @@
+from collections import Counter
+import os
+
 
 def main():
-
-    print("Hello world")
-
     file = open("source.txt", "r")
     fileContent: str = file.read()
 
@@ -23,7 +23,12 @@ def main():
     for i in range(len(left)):
         totalDistance += abs(left[i] - right[i])
 
-    print(totalDistance)
+    similarityScore = 0
+    right = Counter(right)
+    for l in left:
+        similarityScore += l * right[l]
 
+    print(totalDistance)
+    print(similarityScore)
 if __name__ == "__main__":
     main()
